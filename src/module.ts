@@ -27,7 +27,7 @@ export default defineNuxtModule({
     });
 
     extendViteConfig((config) => {
-      // @ts-expect-error: vite
+      // @ts-expect-error: Cannot use import statement outside a module
       config.ssr = {
         noExternal:
           process.env.NODE_ENV === 'development'
