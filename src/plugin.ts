@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore: resolved with Nuxt
+import { defineNuxtPlugin } from '#app';
 import { createClient, SupabaseClientOptions } from '@supabase/supabase-js';
 
 type Options = {

@@ -1,4 +1,9 @@
-import { defineNuxtModule, addTemplate, addPlugin } from '@nuxt/kit';
+import {
+  defineNuxtModule,
+  addTemplate,
+  addPlugin,
+  extendViteConfig
+} from '@nuxt/kit-edge';
 import { resolve } from 'path';
 
 export default defineNuxtModule({
@@ -19,6 +24,22 @@ export default defineNuxtModule({
 
     addPlugin({
       src: resolve(__dirname, './plugin.mjs')
+    });
+
+    extendViteConfig((config) => {
+      // @ts-expect-error: vite
+      config.ssr = {
+        noExternal:
+          process.env.NODE_ENV === 'development'
+            ? [
+                '@supabase/supabase-js',
+                '@supabase/gotrue-js',
+                '@supabase/realtime-js',
+                '@supabase/storage-js',
+                '@supabase/postgrest-js'
+              ]
+            : []
+      };
     });
   }
 });
