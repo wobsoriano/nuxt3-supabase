@@ -1,0 +1,9 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "nuxt dev"
+  },
+  "devDependencies": {
+    "nuxt3": "latest"
+  }
+}

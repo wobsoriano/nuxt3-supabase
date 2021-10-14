@@ -46,6 +46,10 @@ export default defineNuxtModule({
           '@supabase/postgrest-js'
         ]
       };
+
+      config.optimizeDeps = {
+        include: ['cross-fetch', 'websocket']
+      };
     });
   }
 });
