@@ -4,7 +4,16 @@ import {
   addPlugin,
   extendViteConfig
 } from '@nuxt/kit-edge';
+import type { SupabaseClient } from '@supabase/supabase-js';
 import { resolve } from 'path';
+
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore: resolved with Nuxt
+declare module '#app' {
+  interface NuxtApp {
+    $supabase: SupabaseClient;
+  }
+}
 
 export default defineNuxtModule({
   name: 'nuxt3-supabase',
@@ -29,16 +38,13 @@ export default defineNuxtModule({
     extendViteConfig((config) => {
       // @ts-expect-error: Cannot use import statement outside a module
       config.ssr = {
-        noExternal:
-          process.env.NODE_ENV === 'development'
-            ? [
-                '@supabase/supabase-js',
-                '@supabase/gotrue-js',
-                '@supabase/realtime-js',
-                '@supabase/storage-js',
-                '@supabase/postgrest-js'
-              ]
-            : []
+        noExternal: [
+          '@supabase/supabase-js',
+          '@supabase/gotrue-js',
+          '@supabase/realtime-js',
+          '@supabase/storage-js',
+          '@supabase/postgrest-js'
+        ]
       };
     });
   }
