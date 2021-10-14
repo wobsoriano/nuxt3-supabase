@@ -30,7 +30,8 @@
     "lint:codes": "eslint ./src --ext .js,.ts,.vue,.json",
     "lint:fix": "npm-run-all --parallel \"lint:codes --fix\"",
     "lint:secret": "secretlint \"**/*\"",
-    "play": "nuxt dev playground"
+    "dev:setup": "yarn && yarn build && cd playground && yarn",
+    "dev": "cd playground && yarn dev"
   },
   "lint-staged": {
     "*.{json,md,yml}": [
