@@ -1,0 +1,16 @@
+dist
+temp
+coverage
+node_modules
+.DS_Store
+.idea
+.vscode
+.nuxt
+debug.log
+
+*.log
+*.swp
+*~
+
+.env
+nuxt.d.ts
