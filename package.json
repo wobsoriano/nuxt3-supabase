@@ -1,9 +1,9 @@
 {
-  "name": "TODO",
+  "name": "nuxt3-supabase",
   "version": "0.0.1",
   "description": "TODO",
   "keywords": [],
-  "license": "ISC",
+  "license": "MIT",
   "author": "",
   "sideEffects": false,
   "exports": {
@@ -49,6 +49,7 @@
     ]
   },
   "dependencies": {
+    "@supabase/supabase-js": "^1.24.0",
     "nuxt3": "latest"
   },
   "devDependencies": {
