@@ -1,4 +1,4 @@
 dist
 coverage
 ship.config.js
-playground
+packages/playground

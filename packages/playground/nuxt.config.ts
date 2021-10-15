@@ -3,7 +3,7 @@ config();
 import { defineNuxtConfig } from 'nuxt3';
 
 export default defineNuxtConfig({
-  modules: ['../dist/module.js'],
+  modules: ['nuxt3-supabase'],
   supabase: {
     supabaseUrl: process.env.SUPABASE_URL,
     supabaseKey: process.env.SUPABASE_KEY

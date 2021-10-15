@@ -1,0 +1,37 @@
+{
+  "name": "nuxt3-supabase",
+  "version": "0.0.1",
+  "description": "TODO",
+  "keywords": [],
+  "license": "MIT",
+  "author": "",
+  "sideEffects": false,
+  "exports": {
+    "require": "./dist/module.js",
+    "import": "./dist/module.mjs"
+  },
+  "main": "./dist/module.js",
+  "module": "./dist/module.mjs",
+  "types": "./dist/module.d.ts",
+  "files": [
+    "dist/module.js",
+    "dist/module.mjs",
+    "dist/plugin.mjs",
+    "dist/module.d.ts"
+  ],
+  "scripts": {
+    "build": "run-p build:*",
+    "build:module": "siroc build",
+    "build:plugin": "siroc build -i ./src/plugin.ts -o ./dist/plugin.mjs -f esm"
+  },
+  "dependencies": {
+    "@nuxt/kit": "npm:@nuxt/kit-edge@latest",
+    "@supabase/supabase-js": "^1.24.0"
+  },
+  "devDependencies": {
+    "siroc": "^0.16.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
