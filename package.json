@@ -14,7 +14,7 @@
     "format:fix": "run-p \"format:prettier --write\"",
     "format:prettier": "prettier --config .prettierrc --ignore-path .prettierignore '**/*.{js,json,html}'",
     "lint": "run-p lint:secret lint:codes",
-    "lint:codes": "eslint ./packages/nuxt3/src --ext .js,.ts,.vue,.json",
+    "lint:codes": "eslint ./packages --ext .js,.ts,.vue,.json",
     "lint:fix": "run-p \"lint:codes --fix\"",
     "lint:secret": "secretlint \"**/*\"",
     "playground": "yarn workspace playground",
