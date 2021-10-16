@@ -1,5 +1,7 @@
 import { defineSirocConfig } from 'siroc';
 
 export default defineSirocConfig({
-  rollup: {}
+  rollup: {
+    externals: ['vue']
+  }
 });

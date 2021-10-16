@@ -18,7 +18,7 @@ export const authHandler = (options: Options): App => {
     return user || {};
   });
 
-  app.use('/set-auth', (req, res) => {
+  app.use('/set-auth-cookie', (req, res) => {
     supabase.auth.api.setAuthCookie(req, res);
     return 'auth cookie set';
   });

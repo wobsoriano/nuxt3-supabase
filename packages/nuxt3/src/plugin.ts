@@ -14,5 +14,6 @@ export default defineNuxtPlugin(async (nuxtApp) => {
 
   const supabase = createClient(supabaseUrl, supabaseKey, supabaseOptions);
 
+  nuxtApp.app.provide('supabase', supabase);
   nuxtApp.provide('supabase', supabase);
 });

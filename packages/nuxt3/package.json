@@ -11,27 +11,34 @@
   "author": "",
   "sideEffects": false,
   "exports": {
-    "require": "./dist/module.js",
-    "import": "./dist/module.mjs"
+    ".": {
+      "require": "./dist/composables.js",
+      "import": "./dist/composables.mjs"
+    },
+    "./module": "./dist/module.mjs"
   },
-  "main": "./dist/module.js",
-  "module": "./dist/module.mjs",
-  "types": "./dist/module.d.ts",
+  "main": "./dist/composables.js",
+  "module": "./dist/composables.mjs",
+  "types": "./dist/composables.d.ts",
   "files": [
-    "dist/module.js",
-    "dist/module.mjs",
+    "dist/composables.js",
+    "dist/composables.mjs",
     "dist/plugin.mjs",
+    "dist/composables.d.ts",
+    "dist/module.mjs",
     "dist/module.d.ts"
   ],
   "scripts": {
     "build": "run-p build:*",
-    "build:module": "siroc build",
+    "build:composables": "siroc build",
+    "build:module": "siroc build -i ./src/module.ts -o ./dist/module.mjs -f esm",
     "build:plugin": "siroc build -i ./src/plugin.ts -o ./dist/plugin.mjs -f esm"
   },
   "dependencies": {
     "@nuxt/kit": "npm:@nuxt/kit-edge@latest",
     "@supabase/supabase-js": "^1.24.0",
-    "h3": "^0.3.3"
+    "h3": "^0.3.3",
+    "ohmyfetch": "^0.3.1"
   },
   "devDependencies": {
     "siroc": "^0.16.0"

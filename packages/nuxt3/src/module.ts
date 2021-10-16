@@ -4,17 +4,8 @@ import {
   addPlugin,
   addServerMiddleware
 } from '@nuxt/kit';
-import type { SupabaseClient } from '@supabase/supabase-js';
 import { resolve } from 'path';
 import { authHandler, Options } from './auth';
-
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore: resolved with Nuxt
-declare module '#app' {
-  interface NuxtApp {
-    $supabase: SupabaseClient;
-  }
-}
 
 export default defineNuxtModule<Options>({
   name: 'nuxt3-supabase',

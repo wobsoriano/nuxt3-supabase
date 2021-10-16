@@ -1,9 +1,13 @@
 <script setup lang="ts">
-const { $supabase } = useNuxtApp();
+import { useAuthServerSync, useSupabase } from 'nuxt3-supabase';
+
+const supabase = useSupabase();
 
 const { data, pending } = await useAsyncData('posts', () => {
-  return $supabase.from('posts').select();
+  return supabase.from('posts').select();
 });
+
+useAuthServerSync();
 </script>
 
 <template>
