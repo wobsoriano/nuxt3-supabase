@@ -30,7 +30,8 @@
   },
   "dependencies": {
     "@nuxt/kit": "npm:@nuxt/kit-edge@latest",
-    "@supabase/supabase-js": "^1.24.0"
+    "@supabase/supabase-js": "^1.24.0",
+    "h3": "^0.3.3"
   },
   "devDependencies": {
     "siroc": "^0.16.0"

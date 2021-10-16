@@ -3418,7 +3418,7 @@ h3@^0.2.10:
   resolved "https://registry.yarnpkg.com/h3/-/h3-0.2.12.tgz#019db8f0c6910e0dc79266857560e22b5ef2a5e3"
   integrity sha512-M3Ot1J5emIyafibkzGtqlZMQimTf3OMgSR2tv3TSbOHlssEktp3HlzuzWGvRCaX7XhpbmgDjgYpOC/ml9h5xug==
 
-h3@^0.3.1:
+h3@^0.3.1, h3@^0.3.3:
   version "0.3.3"
   resolved "https://registry.yarnpkg.com/h3/-/h3-0.3.3.tgz#9c6feb2ddf842ea5448c53a8bc8bc3a686799c21"
   integrity sha512-ammvVddtZArv6pnCkl0tEekY8owWPZNZCW4teePYzGwfN2w7kb0wnraLIFnB20mqUU2kCAV5bvI+2mjmGztS3w==
