@@ -7,5 +7,6 @@ export default defineNuxtConfig({
   supabase: {
     supabaseUrl: process.env.SUPABASE_URL,
     supabaseKey: process.env.SUPABASE_KEY
-  }
+  },
+  vite: false
 });

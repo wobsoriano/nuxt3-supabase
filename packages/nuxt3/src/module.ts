@@ -1,9 +1,4 @@
-import {
-  defineNuxtModule,
-  addTemplate,
-  addPlugin,
-  extendViteConfig
-} from '@nuxt/kit';
+import { defineNuxtModule, addTemplate, addPlugin } from '@nuxt/kit';
 import type { SupabaseClient } from '@supabase/supabase-js';
 import { resolve } from 'path';
 
@@ -35,18 +30,21 @@ export default defineNuxtModule({
       src: resolve(__dirname, './plugin.mjs')
     });
 
-    extendViteConfig((config) => {
-      config.optimizeDeps = {
-        include: [
-          '@supabase/supabase-js',
-          '@supabase/gotrue-js',
-          '@supabase/realtime-js',
-          '@supabase/storage-js',
-          '@supabase/postgrest-js'
-          // 'cross-fetch',
-          // 'websocket'
-        ]
-      };
-    });
+    // extendViteConfig((config) => {
+    //   // @ts-expect-error: Cannot use import statement outside a module
+    //   config.ssr = {
+    //     noExternal: [
+    //       '@supabase/supabase-js',
+    //       '@supabase/gotrue-js',
+    //       '@supabase/realtime-js',
+    //       '@supabase/storage-js',
+    //       '@supabase/postgrest-js'
+    //     ]
+    //   };
+
+    //   config.optimizeDeps = {
+    //     include: ['cross-fetch', 'websocket']
+    //   };
+    // });
   }
 });
