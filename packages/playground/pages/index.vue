@@ -1,17 +1,12 @@
-<template>
-  <div>hi</div>
-</template>
-
 <script setup lang="ts">
-const nuxtApp = useNuxtApp();
+const { $supabase } = useNuxtApp();
 
-onMounted(() => {
-  nuxtApp.$supabase
-    .from('posts')
-    .select('*')
-    .eq('title', 'hello')
-    .then((res) => {
-      console.log(res);
-    });
+const { data, pending } = await useAsyncData('posts', () => {
+  return $supabase.from('posts').select();
 });
 </script>
+
+<template>
+  <div v-if="pending">Loading...</div>
+  <div v-else>{{ data }}</div>
+</template>
