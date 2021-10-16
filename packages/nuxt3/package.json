@@ -1,8 +1,12 @@
 {
   "name": "nuxt3-supabase",
   "version": "0.0.1",
-  "description": "TODO",
-  "keywords": [],
+  "description": "Supabase for Nuxt 3.",
+  "keywords": [
+    "nuxt",
+    "vue",
+    "supabase"
+  ],
   "license": "MIT",
   "author": "",
   "sideEffects": false,
