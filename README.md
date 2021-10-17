@@ -29,10 +29,11 @@ export default defineNuxtConfig({
 
 ```html
 <script setup lang="ts">
-  const { $supabase } = useNuxtApp();
+  import { supabase } from 'nuxt3-supabase';
+  // or const { $supabase } = useNuxtApp();
 
   const { data, pending } = await useAsyncData('posts', () => {
-    return $supabase.from('posts').select();
+    return supabase.from('posts').select();
   });
 </script>
 
@@ -42,25 +43,51 @@ export default defineNuxtConfig({
 </template>
 ```
 
-## API
+## Composables
 
 ### useSupabase
 
-A composable for the supabase client.
+Supabase client composable.
+
+```ts
+import { useSupabase } from 'nuxt3-supabase';
+
+const supabase = useSupabase();
+```
 
 ### useAuth
 
-A composable for [Supabase Auth](https://supabase.io/docs/guides/auth).
+[Supabase Auth](https://supabase.io/docs/guides/auth) composable.
+
+```ts
+import { useAuth } from 'nuxt3-supabase';
+
+const { user, signIn, signOut } = useAuth();
+```
 
 ### useStorage
 
-A composable for [Supabase Storage](https://supabase.io/docs/guides/storage).
+[Supabase Storage](https://supabase.io/docs/guides/storage) composable.
+
+```ts
+import { useStorage } from 'nuxt3-supabase';
+
+const storage = useStorage();
+```
 
 ### useFrom
 
-A composable for [Supabase Database](https://supabase.io/docs/guides/database).
+[Supabase Database](https://supabase.io/docs/guides/database) composable.
+
+```ts
+import { useFrom } from 'nuxt3-supabase';
+
+const from = useFrom();
+```
 
 ### useOnAuthStateChange
+
+[]
 
 ## Server authentication
 
