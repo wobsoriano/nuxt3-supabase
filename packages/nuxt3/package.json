@@ -8,7 +8,10 @@
     "supabase"
   ],
   "license": "MIT",
-  "author": "",
+  "author": {
+    "name": "Robert Soriano",
+    "email": "sorianorobertc@gmail.com"
+  },
   "sideEffects": false,
   "exports": {
     ".": {
