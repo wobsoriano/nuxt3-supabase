@@ -398,31 +398,6 @@
     unctx "^1.0.2"
     untyped "^0.2.9"
 
-"@nuxt/kit@npm:@nuxt/kit-edge@latest":
-  version "3.0.0-27238235.a1bcc53"
-  resolved "https://registry.yarnpkg.com/@nuxt/kit-edge/-/kit-edge-3.0.0-27238235.a1bcc53.tgz#96530ff79e4c035d46e38158a5c67c2cc00d044f"
-  integrity sha512-DWYSBOiVf8ViV13Q34yn4D+T+MoEQHYoPJXZrrKWSrTdRdI9WmqeESAOIsOAwcD8HXNdXOaDok/x9k93Hnvagg==
-  dependencies:
-    consola "^2.15.3"
-    create-require "^1.1.1"
-    defu "^5.0.0"
-    dotenv "^10.0.0"
-    globby "^11.0.4"
-    hash-sum "^2.0.0"
-    hookable "^5.0.0"
-    jiti "^1.12.7"
-    lodash.template "^4.5.0"
-    mlly "^0.2.6"
-    pathe "^0.2.0"
-    pkg-types "^0.1.3"
-    rc9 "^1.2.0"
-    scule "^0.2.1"
-    semver "^7.3.5"
-    std-env "^2.3.1"
-    ufo "^0.7.9"
-    unctx "^1.0.2"
-    untyped "^0.2.9"
-
 "@nuxt/nitro@npm:@nuxt/nitro-edge@3.0.0-27237303.6acfdcd":
   version "3.0.0-27237303.6acfdcd"
   resolved "https://registry.yarnpkg.com/@nuxt/nitro-edge/-/nitro-edge-3.0.0-27237303.6acfdcd.tgz#e1b3467a16b30ea00c12897529ce9ce0d7c9010b"
@@ -3443,7 +3418,7 @@ h3@^0.2.10:
   resolved "https://registry.yarnpkg.com/h3/-/h3-0.2.12.tgz#019db8f0c6910e0dc79266857560e22b5ef2a5e3"
   integrity sha512-M3Ot1J5emIyafibkzGtqlZMQimTf3OMgSR2tv3TSbOHlssEktp3HlzuzWGvRCaX7XhpbmgDjgYpOC/ml9h5xug==
 
-h3@^0.3.1, h3@^0.3.3:
+h3@^0.3.1:
   version "0.3.3"
   resolved "https://registry.yarnpkg.com/h3/-/h3-0.3.3.tgz#9c6feb2ddf842ea5448c53a8bc8bc3a686799c21"
   integrity sha512-ammvVddtZArv6pnCkl0tEekY8owWPZNZCW4teePYzGwfN2w7kb0wnraLIFnB20mqUU2kCAV5bvI+2mjmGztS3w==
