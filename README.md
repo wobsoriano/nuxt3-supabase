@@ -87,9 +87,25 @@ const from = useFrom();
 
 ### useOnAuthStateChange
 
-[]
+Behaves similarly to [onAuthStateChange](https://supabase.io/docs/reference/javascript/auth-onauthstatechange) but also sets/unsets auth cookie to the server.
 
-## Server authentication
+### getServerSession
+
+Get the server session that was set by `useOnAuthStateChange`.
+
+```html
+<script setup lang="ts">
+  import { useOnAuthStateChange, getServerSession } from 'nuxt3-supabase';
+
+  const nuxtApp = useNuxtApp();
+
+  const { data } = await useAsyncData('user', () =>
+    getServerSession(nuxtApp.ssrContext)
+  );
+
+  useOnAuthStateChange();
+</script>
+```
 
 ## TODO
 
