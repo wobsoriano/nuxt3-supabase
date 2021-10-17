@@ -1,4 +1,4 @@
-import { inject } from 'vue';
+import { inject, onUnmounted } from 'vue';
 import { $fetch } from 'ohmyfetch';
 import type {
   AuthChangeEvent,
@@ -33,13 +33,19 @@ export function useAuthServerSync(): void {
     setServerSession('SIGNED_IN', client.auth.session());
   }
 
-  client.auth.onAuthStateChange((event, session) => {
-    if (event === 'SIGNED_IN') {
-      setServerSession('SIGNED_IN', session);
-    }
+  const { data: authListener } = client.auth.onAuthStateChange(
+    (event, session) => {
+      if (event === 'SIGNED_IN') {
+        setServerSession('SIGNED_IN', session);
+      }
 
-    if (event === 'SIGNED_OUT') {
-      setServerSession('SIGNED_OUT', null);
+      if (event === 'SIGNED_OUT') {
+        setServerSession('SIGNED_OUT', null);
+      }
     }
+  );
+
+  onUnmounted(() => {
+    authListener.unsubscribe();
   });
 }
