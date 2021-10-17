@@ -118,8 +118,9 @@ TIP: You can use `getServerSession` to check if a user is authenticated or not b
 
 ## TODO
 
-- [ ] Vite compatibility https://github.com/nuxt/framework/issues/718
+- [ ] Vite bug https://github.com/nuxt/framework/issues/718
 - [x] Composables
+- [ ] API route authentication check
 
 ## License
 
