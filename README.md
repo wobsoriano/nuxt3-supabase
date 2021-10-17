@@ -21,7 +21,7 @@ export default defineNuxtConfig({
     supabaseUrl: process.env.SUPABASE_URL,
     supabaseKey: process.env.SUPABASE_KEY
   },
-  vite: false // temporary workaround
+  vite: false // temporary workaround for vite build errors
 });
 ```
 
