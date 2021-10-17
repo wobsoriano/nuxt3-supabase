@@ -42,15 +42,27 @@ export default defineNuxtConfig({
 </template>
 ```
 
-## Composables
+## API
+
+### useSupabase
+
+A composable for the supabase client.
 
 ### useAuth
 
+A composable for [Supabase Auth](https://supabase.io/docs/guides/auth).
+
 ### useStorage
+
+A composable for [Supabase Storage](https://supabase.io/docs/guides/storage).
 
 ### useFrom
 
+A composable for [Supabase Database](https://supabase.io/docs/guides/database).
+
 ### useOnAuthStateChange
+
+## Server authentication
 
 ## TODO
 
