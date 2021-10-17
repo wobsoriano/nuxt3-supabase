@@ -1,11 +1,13 @@
 import { inject, onUnmounted } from 'vue';
 import { $fetch } from 'ohmyfetch';
+import { useCookies } from 'h3';
 import type {
   AuthChangeEvent,
   Session,
   SupabaseClient
 } from '@supabase/supabase-js';
 import type { User } from '@supabase/gotrue-js';
+import type { NuxtApp } from 'nuxt3';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore: resolved with Nuxt
@@ -28,11 +30,23 @@ export function useSupabase(): SupabaseClient {
 }
 
 export function useUser(): User | null {
-  const supabase = inject<SupabaseClient>('supabase');
+  const supabase = useSupabase();
   return supabase.auth.user();
 }
 
-export function useAuthServerSync(): void {
+export async function getServerSession(
+  ssrContext: NuxtApp['ssrContext']
+): Promise<User | null> {
+  const supabase = useSupabase();
+  ssrContext.req.cookies = useCookies(ssrContext.req);
+  const user = await (
+    await supabase.auth.api.getUserByCookie(ssrContext.req)
+  ).user;
+  delete ssrContext.req.cookies;
+  return user;
+}
+
+export function useOnAuthStateChange(): void {
   const client = useSupabase();
 
   if (client.auth.session()) {

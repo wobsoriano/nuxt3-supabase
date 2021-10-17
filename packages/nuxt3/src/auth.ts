@@ -13,13 +13,6 @@ export const authHandler = (options: Options): App => {
 
   const supabase = createClient(supabaseUrl, supabaseKey, supabaseOptions);
 
-  app.use('/user', async (req) => {
-    // @ts-expect-error: Missing properties in h3
-    req.cookies = useCookies(req);
-    const user = await (await supabase.auth.api.getUserByCookie(req)).user;
-    return user || {};
-  });
-
   app.use('/set-auth-cookie', async (req, res) => {
     const body = await useBody(req);
 
