@@ -1,4 +1,4 @@
-import { inject, ref, onMounted, onUnmounted } from 'vue';
+import { inject, onMounted, onUnmounted } from 'vue';
 import { $fetch } from 'ohmyfetch';
 import { useCookies } from 'h3';
 import type {
