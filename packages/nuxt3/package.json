@@ -1,6 +1,6 @@
 {
   "name": "nuxt3-supabase",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Supabase for Nuxt 3.",
   "keywords": [
     "nuxt",
