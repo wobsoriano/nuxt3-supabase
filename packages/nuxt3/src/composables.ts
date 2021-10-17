@@ -1,4 +1,4 @@
-import { inject, onUnmounted } from 'vue';
+import { inject, onMounted, onUnmounted } from 'vue';
 import { $fetch } from 'ohmyfetch';
 import { useCookies } from 'h3';
 import type {
@@ -46,12 +46,14 @@ export async function getServerSession(
   return user;
 }
 
-export function useOnAuthStateChange(): void {
+export function useServerSessionSync(): void {
   const client = useSupabase();
 
-  if (client.auth.session()) {
-    setServerSession('SIGNED_IN', client.auth.session());
-  }
+  onMounted(() => {
+    if (client.auth.session()) {
+      setServerSession('SIGNED_IN', client.auth.session());
+    }
+  });
 
   const { data: authListener } = client.auth.onAuthStateChange(
     (event, session) => {

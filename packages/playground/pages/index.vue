@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import {
-  useOnAuthStateChange,
+  useServerSessionSync,
   useSupabase,
   getServerSession
 } from 'nuxt3-supabase';
 
 const supabase = useSupabase();
 
-useOnAuthStateChange();
+useServerSessionSync();
 
 const nuxtApp = useNuxtApp();
 const { data, pending } = await useAsyncData('user', () =>
