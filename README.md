@@ -29,11 +29,10 @@ export default defineNuxtConfig({
 
 ```html
 <script setup lang="ts">
-  import { supabase } from 'nuxt3-supabase';
-  // or const { $supabase } = useNuxtApp();
+  const { $supabase } = useNuxtApp();
 
   const { data, pending } = await useAsyncData('posts', () => {
-    return supabase.from('posts').select();
+    return $supabase.from('posts').select();
   });
 </script>
 
