@@ -32,6 +32,11 @@ export function useStorage(): SupabaseClient['storage'] {
   return supabase.storage;
 }
 
+export function useFrom(): SupabaseClient['from'] {
+  const supabase = useSupabase();
+  return supabase.from;
+}
+
 export async function getServerSession(
   ssrContext: NuxtApp['ssrContext']
 ): Promise<User | null> {
