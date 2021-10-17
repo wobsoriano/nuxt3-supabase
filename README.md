@@ -1,20 +1,22 @@
 # nuxt3-supabase
 
-Supabase for Nuxt 3.
+Nuxt 3 module and composables for Supabase.
 
-## Install
+## Installation
 
 ```bash
-yarn add nuxt3-supabase
+$ yarn add nuxt3-supabase
+# or
+$ npm install --save nuxt3-supabase
 ```
 
-## Configure
+## Getting Started
 
-Add the following to your nuxt.config.ts file.
+Add the following to your `nuxt.config.ts` file.
 
 ```js
 export default defineNuxtConfig({
-  modules: ['nuxt3-supabase'],
+  modules: ['nuxt3-supabase/module'],
   supabase: {
     supabaseUrl: process.env.SUPABASE_URL,
     supabaseKey: process.env.SUPABASE_KEY
@@ -40,10 +42,20 @@ export default defineNuxtConfig({
 </template>
 ```
 
+## Composables
+
+### useAuth
+
+### useStorage
+
+### useFrom
+
+### useOnAuthStateChange
+
 ## TODO
 
 - [ ] Vite compatibility https://github.com/nuxt/framework/issues/718
-- [ ] Composables
+- [x] Composables
 
 ## License
 
