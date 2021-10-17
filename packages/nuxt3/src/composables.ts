@@ -5,6 +5,7 @@ import type {
   Session,
   SupabaseClient
 } from '@supabase/supabase-js';
+import type { User } from '@supabase/gotrue-js';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore: resolved with Nuxt
@@ -24,6 +25,11 @@ function setServerSession(event: AuthChangeEvent, session: Session) {
 export function useSupabase(): SupabaseClient {
   const supabase = inject<SupabaseClient>('supabase');
   return supabase;
+}
+
+export function useUser(): User | null {
+  const supabase = inject<SupabaseClient>('supabase');
+  return supabase.auth.user();
 }
 
 export function useAuthServerSync(): void {
