@@ -1,4 +1,4 @@
-import { inject, onMounted, onUnmounted } from 'vue';
+import { inject, ref, onMounted, onUnmounted } from 'vue';
 import { $fetch } from 'ohmyfetch';
 import { useCookies } from 'h3';
 import type {
@@ -22,9 +22,9 @@ export function useSupabase(): SupabaseClient {
   return supabase;
 }
 
-export function useUser(): User | null {
+export function useAuth(): SupabaseClient['auth'] {
   const supabase = useSupabase();
-  return supabase.auth.user();
+  return supabase.auth;
 }
 
 export function useStorage(): SupabaseClient['storage'] {

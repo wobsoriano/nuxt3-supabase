@@ -10,7 +10,7 @@ const supabase = useSupabase();
 useOnAuthStateChange();
 
 const nuxtApp = useNuxtApp();
-const { data, pending } = await useAsyncData('user', () =>
+const { data } = await useAsyncData('user', () =>
   getServerSession(nuxtApp.ssrContext)
 );
 
@@ -27,7 +27,6 @@ watch(data, (val) => {
       Sign in
     </button>
     <button @click="supabase.auth.signOut">Sign out</button>
-    <div v-if="pending">Loading...</div>
-    <div v-else>{{ data }}</div>
+    <div>{{ data }}</div>
   </div>
 </template>
