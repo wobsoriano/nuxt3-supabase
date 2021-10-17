@@ -51,12 +51,18 @@ function setServerSession(event: AuthChangeEvent, session: Session) {
   });
 }
 
-export function useServerSessionSync(): void {
+type AuthChangeHandler = (
+  event: AuthChangeEvent,
+  session: Session | null
+) => void;
+
+export function useOnAuthStateChange(callback?: AuthChangeHandler): void {
   const client = useSupabase();
 
   onMounted(() => {
     if (client.auth.session()) {
       setServerSession('SIGNED_IN', client.auth.session());
+      callback?.('SIGNED_IN', client.auth.session());
     }
   });
 
@@ -69,31 +75,8 @@ export function useServerSessionSync(): void {
       if (event === 'SIGNED_OUT') {
         setServerSession('SIGNED_OUT', null);
       }
-    }
-  );
 
-  onUnmounted(() => {
-    authListener.unsubscribe();
-  });
-}
-
-type AuthChangeHandler = (
-  event: AuthChangeEvent,
-  session: Session | null
-) => void;
-
-export function useOnAuthStateChange(callback: AuthChangeHandler): void {
-  const client = useSupabase();
-
-  onMounted(() => {
-    if (client.auth.session()) {
-      callback('SIGNED_IN', client.auth.session());
-    }
-  });
-
-  const { data: authListener } = client.auth.onAuthStateChange(
-    (event, session) => {
-      callback(event, session);
+      callback?.(event, session);
     }
   );
 

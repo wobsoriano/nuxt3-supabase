@@ -25,6 +25,13 @@ export const authHandler = (options: Options): App => {
 
     supabase.auth.api.setAuthCookie(req, res);
 
+    // @ts-expect-error: Missing properties in h3
+    delete req.body;
+    // @ts-expect-error: Missing properties in h3
+    delete req.cookies;
+    // @ts-expect-error: Missing properties in h3
+    delete req.status;
+
     return 'auth cookie set';
   });
 
