@@ -17,13 +17,6 @@ declare module '#app' {
   }
 }
 
-function setServerSession(event: AuthChangeEvent, session: Session) {
-  return $fetch('/api/auth/set-auth-cookie', {
-    method: 'POST',
-    body: { event, session }
-  });
-}
-
 export function useSupabase(): SupabaseClient {
   const supabase = inject<SupabaseClient>('supabase');
   return supabase;
@@ -32,6 +25,11 @@ export function useSupabase(): SupabaseClient {
 export function useUser(): User | null {
   const supabase = useSupabase();
   return supabase.auth.user();
+}
+
+export function useStorage(): SupabaseClient['storage'] {
+  const supabase = useSupabase();
+  return supabase.storage;
 }
 
 export async function getServerSession(
@@ -44,6 +42,13 @@ export async function getServerSession(
   ).user;
   delete ssrContext.req.cookies;
   return user;
+}
+
+function setServerSession(event: AuthChangeEvent, session: Session) {
+  return $fetch('/api/auth/set-auth-cookie', {
+    method: 'POST',
+    body: { event, session }
+  });
 }
 
 export function useServerSessionSync(): void {
@@ -64,6 +69,31 @@ export function useServerSessionSync(): void {
       if (event === 'SIGNED_OUT') {
         setServerSession('SIGNED_OUT', null);
       }
+    }
+  );
+
+  onUnmounted(() => {
+    authListener.unsubscribe();
+  });
+}
+
+type AuthChangeHandler = (
+  event: AuthChangeEvent,
+  session: Session | null
+) => void;
+
+export function useOnAuthStateChange(callback: AuthChangeHandler): void {
+  const client = useSupabase();
+
+  onMounted(() => {
+    if (client.auth.session()) {
+      callback('SIGNED_IN', client.auth.session());
+    }
+  });
+
+  const { data: authListener } = client.auth.onAuthStateChange(
+    (event, session) => {
+      callback(event, session);
     }
   );
 
