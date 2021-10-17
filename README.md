@@ -107,6 +107,8 @@ Get the server session that was set by `useOnAuthStateChange`.
 </script>
 ```
 
+TIP: You can use `getServerSession` to check if a user is authenticated or not before route load.
+
 ## TODO
 
 - [ ] Vite compatibility https://github.com/nuxt/framework/issues/718
