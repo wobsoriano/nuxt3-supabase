@@ -89,6 +89,14 @@ const from = useFrom();
 
 Behaves similarly to [onAuthStateChange](https://supabase.io/docs/reference/javascript/auth-onauthstatechange) but also sets/unsets auth cookie to the server.
 
+```ts
+import { useOnAuthStateChange } from 'nuxt3-supabase';
+
+useOnAuthStateChange((event, session) => {
+  console.log(event, session);
+});
+```
+
 ### getServerSession
 
 Get the server session that was set by `useOnAuthStateChange`.
