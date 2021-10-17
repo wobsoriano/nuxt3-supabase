@@ -3,14 +3,16 @@ import { useAuthServerSync, useSupabase } from 'nuxt3-supabase';
 
 const supabase = useSupabase();
 
-const { data, pending } = await useAsyncData('posts', () => {
-  return supabase.from('posts').select();
-});
-
 useAuthServerSync();
 </script>
 
 <template>
-  <div v-if="pending">Loading...</div>
-  <div v-else>{{ data }}</div>
+  <div>
+    <button
+      @click="supabase.auth.signIn({ email: 'sorianorobertc@gmail.com' })"
+    >
+      Sign in
+    </button>
+    <button @click="supabase.auth.signOut">Sign out</button>
+  </div>
 </template>
