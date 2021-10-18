@@ -1,9 +1,5 @@
 <script setup lang="ts">
-import {
-  useOnAuthStateChange,
-  useSupabase,
-  getServerSession
-} from 'nuxt3-supabase';
+import { useOnAuthStateChange, useSupabase, getSession } from 'nuxt3-supabase';
 
 const supabase = useSupabase();
 
@@ -11,7 +7,7 @@ useOnAuthStateChange();
 
 const nuxtApp = useNuxtApp();
 const { data } = await useAsyncData('user', () =>
-  getServerSession(nuxtApp.ssrContext)
+  getSession(nuxtApp.ssrContext)
 );
 
 watch(data, (val) => {

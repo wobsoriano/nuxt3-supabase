@@ -42,7 +42,7 @@ export function useFrom(): SupabaseClient['from'] {
   return supabase.from;
 }
 
-export async function getServerSession(
+export async function getSession(
   ssrContext: NuxtApp['ssrContext']
 ): Promise<User | null> {
   const supabase = useSupabase();
