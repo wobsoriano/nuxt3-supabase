@@ -4,7 +4,7 @@ import { createClient, SupabaseClientOptions } from '@supabase/supabase-js';
 export type Options = {
   supabaseUrl: string;
   supabaseKey: string;
-  supabaseOptions: SupabaseClientOptions;
+  supabaseOptions?: SupabaseClientOptions;
 };
 
 export const authHandler = (options: Options): App => {

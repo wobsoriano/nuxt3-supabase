@@ -1,13 +1,16 @@
 import { inject, onMounted, onUnmounted } from 'vue';
 import { $fetch } from 'ohmyfetch';
 import { useCookies } from 'h3';
-import type {
+import type { Options } from './auth';
+import {
   AuthChangeEvent,
+  createClient,
   Session,
   SupabaseClient
 } from '@supabase/supabase-js';
 import type { User } from '@supabase/gotrue-js';
 import type { NuxtApp } from 'nuxt3';
+import type { IncomingMessage } from 'http';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore: resolved with Nuxt
@@ -19,11 +22,9 @@ declare module '#app' {
 
 export function useSupabase(): SupabaseClient {
   const supabase = inject<SupabaseClient>('supabase');
-
   if (!supabase) {
     throw new Error('Supabase provider not found');
   }
-
   return supabase;
 }
 
@@ -52,6 +53,22 @@ export async function getSession(
     await supabase.auth.api.getUserByCookie(ssrContext?.req)
   ).user;
   delete ssrContext?.req.cookies;
+  return user;
+}
+
+export async function getServerSession(
+  req: IncomingMessage,
+  options: Options
+): Promise<User | null> {
+  const { supabaseKey, supabaseUrl, supabaseOptions } = options;
+  const supabase = createClient(supabaseUrl, supabaseKey, supabaseOptions);
+
+  // @ts-expect-error: Missing properties in h3
+  req.cookies = useCookies(req);
+  const user = await (await supabase.auth.api.getUserByCookie(req)).user;
+  // @ts-expect-error: Missing properties in h3
+  delete req.cookies;
+
   return user;
 }
 

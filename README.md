@@ -28,7 +28,7 @@ export default defineNuxtConfig({
 ## Usage
 
 ```html
-<script setup lang="ts">
+<script setup>
   const { $supabase } = useNuxtApp();
 
   const { data, pending } = await useAsyncData('posts', () => {
@@ -101,7 +101,7 @@ useOnAuthStateChange((event, session) => {
 Get the server session that was set by `useOnAuthStateChange`.
 
 ```html
-<script setup lang="ts">
+<script setup>
   import { useOnAuthStateChange, getSession } from 'nuxt3-supabase';
 
   const nuxtApp = useNuxtApp();
@@ -116,11 +116,35 @@ Get the server session that was set by `useOnAuthStateChange`.
 
 TIP: You can use `getSession` to check if a user is authenticated before route load.
 
+### getServerSession
+
+A helper function to get current user in API routes. This requires passing of the key and url again.
+
+```ts
+import { getServerSession } from 'nuxt3-supabase';
+
+export default async (req, res) => {
+  const user = await getServerSession(req, {
+    supabaseUrl: process.env.SUPABASE_URL,
+    supabaseKey: process.env.SUPABASE_KEY
+  });
+
+  if (!user) {
+    res.statusCode = 400;
+    res.end('Unauthorized!');
+  }
+
+  return {
+    user
+  };
+};
+```
+
 ## TODO
 
-- [ ] Vite bug https://github.com/nuxt/framework/issues/718
+- [ ] Vite dev/build bug https://github.com/nuxt/framework/issues/718
 - [x] Composables
-- [ ] API route authentication check
+- [x] API route authentication check
 
 ## License
 
