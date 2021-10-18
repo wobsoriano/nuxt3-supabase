@@ -96,25 +96,25 @@ useOnAuthStateChange((event, session) => {
 });
 ```
 
-### getServerSession
+### getSession
 
 Get the server session that was set by `useOnAuthStateChange`.
 
 ```html
 <script setup lang="ts">
-  import { useOnAuthStateChange, getServerSession } from 'nuxt3-supabase';
+  import { useOnAuthStateChange, getSession } from 'nuxt3-supabase';
 
   const nuxtApp = useNuxtApp();
 
   const { data } = await useAsyncData('user', () =>
-    getServerSession(nuxtApp.ssrContext)
+    getSession(nuxtApp.ssrContext)
   );
 
   useOnAuthStateChange();
 </script>
 ```
 
-TIP: You can use `getServerSession` to check if a user is authenticated before route load.
+TIP: You can use `getSession` to check if a user is authenticated before route load.
 
 ## TODO
 
