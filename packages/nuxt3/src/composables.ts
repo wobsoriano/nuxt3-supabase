@@ -19,6 +19,11 @@ declare module '#app' {
 
 export function useSupabase(): SupabaseClient {
   const supabase = inject<SupabaseClient>('supabase');
+
+  if (!supabase) {
+    throw new Error('Supabase provider not found');
+  }
+
   return supabase;
 }
 
@@ -41,15 +46,16 @@ export async function getServerSession(
   ssrContext: NuxtApp['ssrContext']
 ): Promise<User | null> {
   const supabase = useSupabase();
-  ssrContext.req.cookies = useCookies(ssrContext.req);
+  // @ts-expect-error: Provided by nuxt
+  ssrContext.req.cookies = useCookies(ssrContext?.req);
   const user = await (
-    await supabase.auth.api.getUserByCookie(ssrContext.req)
+    await supabase.auth.api.getUserByCookie(ssrContext?.req)
   ).user;
-  delete ssrContext.req.cookies;
+  delete ssrContext?.req.cookies;
   return user;
 }
 
-function setServerSession(event: AuthChangeEvent, session: Session) {
+function setServerSession(event: AuthChangeEvent, session: Session | null) {
   return $fetch('/api/auth/set-auth-cookie', {
     method: 'POST',
     body: { event, session }
@@ -86,6 +92,6 @@ export function useOnAuthStateChange(callback?: AuthChangeHandler): void {
   );
 
   onUnmounted(() => {
-    authListener.unsubscribe();
+    authListener?.unsubscribe();
   });
 }
