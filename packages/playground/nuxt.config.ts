@@ -1,5 +1,3 @@
-import { config } from 'dotenv';
-config();
 import { defineNuxtConfig } from 'nuxt3';
 
 export default defineNuxtConfig({
