@@ -19,7 +19,8 @@
     "lint:secret": "secretlint \"**/*\"",
     "playground": "yarn workspace playground",
     "nuxt3": "yarn workspace nuxt3-supabase",
-    "copy:markdown": "cp README.md packages/nuxt3/README.md"
+    "copy:markdown": "cp README.md packages/nuxt3/README.md",
+    "clean": "rm -rf node_modules packages/nuxt3/node_modules packages/playground/node_modules"
   },
   "lint-staged": {
     "*.{json,md,yml}": [
