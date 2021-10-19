@@ -54,5 +54,8 @@
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
+  },
+  "volta": {
+    "node": "16.11.0"
   }
 }
