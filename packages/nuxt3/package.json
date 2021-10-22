@@ -15,34 +15,34 @@
   "sideEffects": false,
   "exports": {
     ".": {
-      "require": "./dist/composables.js",
+      "require": "./dist/composables.cjs",
       "import": "./dist/composables.mjs"
     },
     "./module": "./dist/module.mjs"
   },
-  "main": "./dist/composables.js",
+  "main": "./dist/composables.cjs",
   "module": "./dist/composables.mjs",
   "types": "./dist/composables.d.ts",
   "files": [
-    "dist/composables.js",
+    "dist/composables.cjs",
     "dist/composables.mjs",
-    "dist/plugin.mjs",
     "dist/composables.d.ts",
+    "dist/plugin.mjs",
+    "dist/plugin.cjs",
+    "dist/plugin.d.ts",
     "dist/module.mjs",
+    "dist/module.cjs",
     "dist/module.d.ts"
   ],
   "scripts": {
-    "build": "run-p build:*",
-    "build:composables": "siroc build",
-    "build:module": "siroc build -i ./src/module.ts -o ./dist/module.mjs -f esm",
-    "build:plugin": "siroc build -i ./src/plugin.ts -o ./dist/plugin.mjs -f esm"
+    "build": "unbuild"
   },
   "dependencies": {
     "@supabase/supabase-js": "^1.24.0",
     "nuxt3": "latest"
   },
   "devDependencies": {
-    "siroc": "^0.16.0"
+    "unbuild": "^0.5.10"
   },
   "publishConfig": {
     "access": "public"

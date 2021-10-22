@@ -18,11 +18,14 @@ watch(data, (val) => {
 <template>
   <div>
     <button
-      @click="supabase.auth.signIn({ email: 'sorianorobertc@gmail.com' })"
+      @click="
+        supabase.auth.signIn({
+          email: 'sorianorobertc@gmail.com'
+        })
+      "
     >
       Sign in
     </button>
-    <button @click="supabase.auth.signOut">Sign out</button>
     <div>{{ data }}</div>
   </div>
 </template>
