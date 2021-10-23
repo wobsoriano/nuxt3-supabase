@@ -39,7 +39,9 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "^1.24.0",
-    "nuxt3": "latest"
+    "nuxt3": "latest",
+    "pathe": "^0.2.0",
+    "siroc": "^0.16.0"
   },
   "devDependencies": {
     "unbuild": "^0.5.10"

@@ -15,4 +15,5 @@ debug.log
 .env
 nuxt.d.ts
 
-playground/yarn.lock
+packages/playground/yarn.lock
+packages/playground/.output

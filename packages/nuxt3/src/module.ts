@@ -4,8 +4,12 @@ import {
   addPlugin,
   addServerMiddleware
 } from '@nuxt/kit';
-import { resolve } from 'path';
+import { dirname, resolve } from 'pathe';
+import { fileURLToPath } from 'url';
 import { authHandler, Options } from './auth';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 export default defineNuxtModule<Options>({
   name: 'nuxt3-supabase',
