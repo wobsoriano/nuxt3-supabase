@@ -20,8 +20,7 @@ export default defineNuxtConfig({
   supabase: {
     supabaseUrl: process.env.SUPABASE_URL,
     supabaseKey: process.env.SUPABASE_KEY
-  },
-  vite: false // temporary workaround for vite build errors
+  }
 });
 ```
 
@@ -139,12 +138,6 @@ export default async (req, res) => {
   };
 };
 ```
-
-## TODO
-
-- [ ] Vite dev/build bug https://github.com/nuxt/framework/issues/718
-- [x] Composables
-- [x] API route authentication check
 
 ## License
 
