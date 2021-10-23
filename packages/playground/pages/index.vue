@@ -5,7 +5,10 @@ const supabase = useSupabase();
 
 useOnAuthStateChange();
 
+console.log(process.server);
+
 const nuxtApp = useNuxtApp();
+
 const { data } = await useAsyncData('user', () =>
   getSession(nuxtApp.ssrContext)
 );
@@ -26,6 +29,7 @@ watch(data, (val) => {
     >
       Sign in
     </button>
+    <button @click="supabase.auth.signOut()">Sign out</button>
     <div>{{ data }}</div>
   </div>
 </template>

@@ -72,11 +72,18 @@ export async function getServerSession(
   return user;
 }
 
-function setServerSession(event: AuthChangeEvent, session: Session | null) {
-  return $fetch('/api/auth/set-auth-cookie', {
-    method: 'POST',
-    body: { event, session }
-  });
+async function setServerSession(
+  event: AuthChangeEvent,
+  session: Session | null
+) {
+  try {
+    await $fetch('/api/auth/set-auth-cookie', {
+      method: 'POST',
+      body: { event, session }
+    });
+  } catch (e) {
+    // 404 bug
+  }
 }
 
 type AuthChangeHandler = (
