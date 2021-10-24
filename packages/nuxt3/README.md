@@ -20,7 +20,8 @@ export default defineNuxtConfig({
   supabase: {
     supabaseUrl: process.env.SUPABASE_URL,
     supabaseKey: process.env.SUPABASE_KEY
-  }
+  },
+  vite: false // temporary fix: follow this https://github.com/nuxt/framework/issues/1097
 });
 ```
 
