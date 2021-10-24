@@ -21,7 +21,7 @@ export default defineNuxtConfig({
     supabaseUrl: process.env.SUPABASE_URL,
     supabaseKey: process.env.SUPABASE_KEY
   },
-  vite: false // temporary fix: follow this https://github.com/nuxt/framework/issues/1097
+  vite: false // temporary fix. Known issue with non-ESM libraries.
 });
 ```
 
