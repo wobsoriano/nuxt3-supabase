@@ -9,7 +9,7 @@ export default (nuxtApp: any): void => {
 
   const supabase = createClient(supabaseUrl, supabaseKey, supabaseOptions);
 
-  // App already provides supabase warn. Possibly a new update.
-  // nuxtApp.vueApp.provide('supabase', supabase);
+  // TODO: App already provides supabase warn in dev mode. Possibly a new update.
+  nuxtApp.vueApp.provide('supabase', supabase);
   nuxtApp.provide('supabase', supabase);
 };
