@@ -2,8 +2,8 @@ import {
   defineNuxtModule,
   addTemplate,
   addPlugin,
-  addServerMiddleware,
-  extendViteConfig
+  addServerMiddleware
+  // extendViteConfig
 } from '@nuxt/kit';
 import { dirname, resolve } from 'pathe';
 import { fileURLToPath } from 'url';
@@ -37,21 +37,16 @@ export default defineNuxtModule<Options>({
       src: resolve(__dirname, './plugin.mjs')
     });
 
-    extendViteConfig((config) => {
-      // @ts-expect-error: Cannot use import statement outside a module
-      config.ssr = {
-        noExternal: [
-          '@supabase/supabase-js',
-          '@supabase/gotrue-js',
-          '@supabase/realtime-js',
-          '@supabase/storage-js',
-          '@supabase/postgrest-js'
-        ]
-      };
-    });
-
-    //   config.optimizeDeps = {
-    //     include: ['cross-fetch', 'websocket']
+    // extendViteConfig((config) => {
+    //   // @ts-expect-error: Cannot use import statement outside a module
+    //   config.ssr = {
+    //     noExternal: [
+    //       '@supabase/supabase-js',
+    //       '@supabase/gotrue-js',
+    //       '@supabase/realtime-js',
+    //       '@supabase/storage-js',
+    //       '@supabase/postgrest-js'
+    //     ]
     //   };
     // });
   }
