@@ -1,6 +1,6 @@
 {
   "name": "nuxt3-supabase",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "description": "Nuxt 3 module and composables for Supabase.",
   "keywords": [
     "nuxt",
