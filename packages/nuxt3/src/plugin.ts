@@ -1,7 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore: resolved with Nuxt
 import { defineNuxtPlugin } from '#app';
-import type { NuxtApp } from 'nuxt3';
 import { createClient } from '@supabase/supabase-js';
 import type { Options } from './auth';
 
@@ -9,7 +8,7 @@ import type { Options } from './auth';
 // @ts-ignore: resolved with Nuxt
 import optionsLoader from '#build/supabase.options.mjs';
 
-export default defineNuxtPlugin(async (nuxtApp: NuxtApp) => {
+export default defineNuxtPlugin(async (nuxtApp: any) => {
   const loadedOptions = (await optionsLoader()) as Options;
   const { supabaseKey, supabaseUrl, supabaseOptions } = loadedOptions;
 
