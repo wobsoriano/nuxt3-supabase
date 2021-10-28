@@ -1,19 +1,15 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore: resolved with Nuxt
-import { defineNuxtPlugin } from '#app';
 import { createClient } from '@supabase/supabase-js';
-import type { Options } from './auth';
+import type { SupabaseClientOptions } from '@supabase/supabase-js';
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore: resolved with Nuxt
-import optionsLoader from '#build/supabase.options.mjs';
-
-export default defineNuxtPlugin(async (nuxtApp: any) => {
-  const loadedOptions = (await optionsLoader()) as Options;
-  const { supabaseKey, supabaseUrl, supabaseOptions } = loadedOptions;
+export default (nuxtApp: any): void => {
+  const supabaseUrl = '<%= options.supabaseUrl %>';
+  const supabaseKey = '<%= options.supabaseKey %>';
+  const supabaseOptions =
+    '<%= options.supabaseOptions %>' as SupabaseClientOptions;
 
   const supabase = createClient(supabaseUrl, supabaseKey, supabaseOptions);
 
-  nuxtApp.vueApp.provide('supabase', supabase);
+  // App already provides supabase warn. Possibly a new update.
+  // nuxtApp.vueApp.provide('supabase', supabase);
   nuxtApp.provide('supabase', supabase);
-});
+};
