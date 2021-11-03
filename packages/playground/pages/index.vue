@@ -5,17 +5,15 @@ const supabase = useSupabase();
 
 useOnAuthStateChange();
 
-console.log(process.server);
-
 const nuxtApp = useNuxtApp();
 
-const { data } = await useAsyncData('user', () =>
-  getSession(nuxtApp.ssrContext)
+const { data } = await useAsyncData(
+  'user',
+  () => getSession(nuxtApp.ssrContext),
+  {
+    server: true
+  }
 );
-
-watch(data, (val) => {
-  console.log(val);
-});
 </script>
 
 <template>

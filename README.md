@@ -2,6 +2,8 @@
 
 Nuxt 3 module and composables for Supabase.
 
+🚧 Nuxt 3 is currently in beta, keep in mind that it is not yet production ready.
+
 ## Installation
 
 ```bash
