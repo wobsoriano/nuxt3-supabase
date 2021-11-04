@@ -123,12 +123,27 @@ TIP: You can use `getSession` to check if a user is authenticated before route l
 A helper function to get current user in API routes. This requires passing of the key and url again.
 
 ```ts
+export default defineNuxtConfig({
+  modules: ['nuxt3-supabase/module'],
+  supabase: {
+    supabaseUrl: process.env.SUPABASE_URL,
+    supabaseKey: process.env.SUPABASE_KEY
+  },
+  privateRuntimeConfig: {
+    supabaseUrl: process.env.SUPABASE_URL,
+    supabaseKey: process.env.SUPABASE_KEY
+  }
+});
+```
+
+```ts
+import runtimeConfig from '#config';
 import { getServerSession } from 'nuxt3-supabase';
 
 export default async (req, res) => {
   const user = await getServerSession(req, {
-    supabaseUrl: process.env.SUPABASE_URL,
-    supabaseKey: process.env.SUPABASE_KEY
+    supabaseUrl: runtimeConfig.supabaseUrl,
+    supabaseKey: runtimeConfig.supabaseKey
   });
 
   if (!user) {
