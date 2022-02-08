@@ -8,8 +8,10 @@ import { fileURLToPath } from 'url';
 import { authHandler, Options } from './auth';
 
 export default defineNuxtModule<Options>({
-  name: 'nuxt3-supabase',
-  configKey: 'supabase',
+  meta: {
+    name: 'nuxt3-supabase',
+    configKey: 'supabase',
+  },
   setup(options, nuxt) {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = dirname(__filename);
