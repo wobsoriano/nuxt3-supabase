@@ -1,5 +1,7 @@
 # nuxt3-supabase
 
+# Archived. Check https://github.com/larbish/supabase-module instead
+
 Nuxt 3 module and composables for Supabase.
 
 🚧 Nuxt 3 is currently in beta, keep in mind that it is not yet production ready.
